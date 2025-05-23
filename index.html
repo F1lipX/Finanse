@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finanse PWA</title>
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Style aplikacji -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🧾 Moje Finanse</h1>
+
+  <!-- Sekcja dodawania transakcji -->
+  <form id="transaction-form">
+    <input type="text" id="description" placeholder="Opis" required />
+    <input type="number" id="amount" placeholder="Kwota (+/-)" required />
+    <button type="submit">Dodaj</button>
+  </form>
+
+  <!-- Sekcja z listą transakcji -->
+  <h2>📋 Historia</h2>
+  <ul id="transactions"></ul>
+
+  <!-- Sekcja z podsumowaniem -->
+  <h2>💰 Bilans</h2>
+  <p>Saldo: <span id="balance">0</span> zł</p>
+  <p>Przychody: <span id="income">0</span> zł</p>
+  <p>Wydatki: <span id="expense">0</span> zł</p>
+
+  <!-- Skrypt JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
