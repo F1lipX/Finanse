@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rejestracja</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-box">
+    <h2>📝 Rejestracja</h2>
+    <form id="register-form">
+      <input type="email" id="reg-email" placeholder="Email" required />
+      <input type="password" id="reg-password" placeholder="Hasło" required />
+      <button type="submit">Zarejestruj</button>
+    </form>
+    <p>Masz już konto? <a href="login.html">Zaloguj się</a></p>
+  </div>
+
+  <script>
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+
+      const res = await fetch('https://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (res.ok) {
+        alert('✅ Zarejestrowano pomyślnie!');
+        window.location.href = 'login.html';
+      } else {
+        alert('❌ Rejestracja nieudana');
+      }
+    });
+  </script>
+</body>
+</html>

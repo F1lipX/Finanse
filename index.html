@@ -5,33 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Finanse PWA</title>
 
-  <!-- Manifest PWA -->
+  <!-- Manifest -->
   <link rel="manifest" href="manifest.json" />
 
-  <!-- Style aplikacji -->
+  <!-- Styl -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h1>🧾 Moje Finanse</h1>
+  <div class="container">
+    <!-- LEWA KOLUMNA -->
+    <div class="left-panel">
+      <!-- Formularz transakcji -->
+      <form id="transaction-form">
+        <input type="text" id="description" placeholder="Opis" required />
+        <input type="number" id="amount" placeholder="Kwota (+/-)" required />
+        <button type="submit">Dodaj transakcję</button>
+      </form>
 
-  <!-- Sekcja dodawania transakcji -->
-  <form id="transaction-form">
-    <input type="text" id="description" placeholder="Opis" required />
-    <input type="number" id="amount" placeholder="Kwota (+/-)" required />
-    <button type="submit">Dodaj</button>
-  </form>
+      <!-- Historia -->
+      <h2>📋 Historia</h2>
+      <ul id="transactions"></ul>
 
-  <!-- Sekcja z listą transakcji -->
-  <h2>📋 Historia</h2>
-  <ul id="transactions"></ul>
+      <!-- Bilans -->
+      <h2>💰 Bilans</h2>
+      <p>Saldo: <span id="balance">0</span> zł</p>
+      <p>Przychody: <span id="income">0</span> zł</p>
+      <p>Wydatki: <span id="expense">0</span> zł</p>
+    </div>
 
-  <!-- Sekcja z podsumowaniem -->
-  <h2>💰 Bilans</h2>
-  <p>Saldo: <span id="balance">0</span> zł</p>
-  <p>Przychody: <span id="income">0</span> zł</p>
-  <p>Wydatki: <span id="expense">0</span> zł</p>
+    <!-- PRAWA KOLUMNA -->
+    <div class="right-panel">
+      <!-- Budżet -->
+      <div class="budget-box">
+        <h2>📈 Budżet</h2>
+        <form id="budget-form">
+          <input type="number" id="budget" placeholder="Ustaw budżet miesięczny" required />
+          <button type="submit">Zapisz budżet</button>
+        </form>
+        <button id="edit-budget">✏️ Edytuj budżet</button>
+        <p>Aktualny budżet: <span id="current-budget">0</span> zł</p>
+        <p>Wydano: <span id="spent">0</span> zł</p>
+        <p><strong id="budget-warning" style="color: red;"></strong></p>
+      </div>
 
-  <!-- Skrypt JavaScript -->
+      <!-- Analiza -->
+      <div class="analysis-section">
+        <h2>📊 Analiza</h2>
+        <div id="analysis-box">
+          <p>Brak danych do analizy.</p>
+        </div>
+        <button id="toggle-chart">🔁 Pokaż / Ukryj wykres</button>
+        <div id="chart-container" class="hidden">
+          <canvas id="finance-chart" width="300" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skrypt -->
   <script src="script.js"></script>
 </body>
 </html>
